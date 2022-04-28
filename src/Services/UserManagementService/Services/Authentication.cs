@@ -17,14 +17,14 @@ namespace UserManagementService.Api.Services
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IConfiguration _configuration;
-        private readonly ILocalConnectionMultiplexer _connectionMultiplexer;
+        private readonly ConnectionMultiplexer _connectionMultiplexer;
         private readonly IDatabase _database;
 
-        public AuthenticationService(IConfiguration configuration, ILocalConnectionMultiplexer connectionMultiplexer)
+        public AuthenticationService(IConfiguration configuration, ConnectionMultiplexer connectionMultiplexer)
         {
             _configuration = configuration;
             _connectionMultiplexer = connectionMultiplexer;
-            _database = _connectionMultiplexer.GetConnectionMultiplexer().GetDatabase();
+            _database = _connectionMultiplexer.GetDatabase();
         }
 
         public async Task<LoginResponseModel> Login(LoginRequestModel loginRequestModel)
@@ -42,7 +42,6 @@ namespace UserManagementService.Api.Services
             {
                 return await Task.FromResult(new LoginResponseModel("UserName/Pasword is correct."));
             }
-
 
             var claims = new Claim[] {
                 new Claim(ClaimTypes.NameIdentifier,deserializedUser.UserName),

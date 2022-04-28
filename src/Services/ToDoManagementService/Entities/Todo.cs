@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ToDoManagementService.Api.Entities
+﻿namespace ToDoManagementService.Api.Entities
 {
     public class Todo
     {

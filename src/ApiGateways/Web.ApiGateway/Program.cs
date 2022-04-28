@@ -21,7 +21,6 @@ namespace Web.ApiGateway
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-                    //.AddJsonFile("Configurations/ocelot.json")
                     .AddJsonFile("Configurations/ocelotdocker.json")
                     .AddEnvironmentVariables();
                 })

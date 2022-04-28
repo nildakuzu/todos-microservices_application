@@ -27,12 +27,6 @@ namespace NotificationService.Api.Extensions
         {
             var consulClient = applicationBuilder.ApplicationServices.GetRequiredService<IConsulClient>();
 
-            // for local
-            //var features = applicationBuilder.Properties["server.Features"] as FeatureCollection;
-            //var addresses = features.Get<IServerAddressesFeature>();
-            //var adress = addresses.Addresses.First();
-            //var uri = new Uri(adress);
-
             var uri = configuration.GetValue<Uri>("ConsulConfig:ServiceAddress");
             var serviceName = configuration.GetValue<string>("ConsulConfig:ServiceName");
             var serviceId = configuration.GetValue<string>("ConsulConfig:ServiceId");

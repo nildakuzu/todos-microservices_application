@@ -1,5 +1,4 @@
 ﻿using EventBus.Base.Events;
-using System;
 
 namespace ToDoManagementService.Api.Events
 {

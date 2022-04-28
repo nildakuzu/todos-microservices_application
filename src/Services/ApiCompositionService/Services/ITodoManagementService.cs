@@ -1,6 +1,6 @@
-﻿using System.Net.Http;
+﻿using ApiCompositionService.Models;
+using System.Net.Http;
 using System.Threading.Tasks;
-using ApiCompositionService.Models;
 
 namespace ApiCompositionService.Services
 {

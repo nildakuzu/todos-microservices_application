@@ -1,12 +1,9 @@
 ﻿using Consul;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting.Server.Features;
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Linq;
 
 namespace ToDoManagementService.Api.Extensions
 {
@@ -26,12 +23,6 @@ namespace ToDoManagementService.Api.Extensions
         public static IApplicationBuilder RegisterWithConsul(this IApplicationBuilder applicationBuilder, IHostApplicationLifetime hostApplicationLifetime, IConfiguration configuration)
         {
             var consulClient = applicationBuilder.ApplicationServices.GetRequiredService<IConsulClient>();
-
-            // for local
-            //var features = applicationBuilder.Properties["server.Features"] as FeatureCollection;
-            //var addresses = features.Get<IServerAddressesFeature>();
-            //var adress = addresses.Addresses.First();
-            //var uri = new Uri(adress);
 
             var uri = configuration.GetValue<Uri>("ConsulConfig:ServiceAddress");
             var serviceName = configuration.GetValue<string>("ConsulConfig:ServiceName");

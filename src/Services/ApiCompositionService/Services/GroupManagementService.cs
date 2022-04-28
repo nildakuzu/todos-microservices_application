@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ApiCompositionService.Extensions;
+using ApiCompositionService.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ApiCompositionService.Extensions;
-using ApiCompositionService.Models;
 
 namespace ApiCompositionService.Services
 {
