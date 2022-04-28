@@ -1,0 +1,159 @@
+version: '3.4'
+
+services:
+  usermanagementservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5001
+      - ConsulConfig__Address=http://s_consul:8500
+      - ConsulConfig__ServiceAddress=http://c_usermanagement:5001
+      - ConsulConfig__ServiceName=UserManagementService
+      - ConsulConfig__ServiceId=UserManagement
+    ports:
+      - 5001:5001
+    networks:
+      - net_backendservices
+    depends_on:
+      - web.apigateway
+      - s_redis
+      - s_consul
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  groupmanagementservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5003
+      - ConsulConfig__Address=http://s_consul:8500
+      - ConsulConfig__ServiceAddress=http://c_groupmanagement:5003
+      - ConsulConfig__ServiceName=GroupManagementService
+      - ConsulConfig__ServiceId=GroupManagement
+    ports:
+      - 5003:5003
+    networks:
+      - net_backendservices
+    depends_on:
+      - web.apigateway
+      - s_postgresql
+      - s_consul
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  todomanagementservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5002
+      - ConsulConfig__Address=http://s_consul:8500
+      - ConsulConfig__ServiceAddress=http://c_todomanagement:5002
+      - ConsulConfig__ServiceName=TodoManagementService
+      - ConsulConfig__ServiceId=TodoManagement
+    ports:
+      - 5002:5002
+    networks:
+      - net_backendservices
+    depends_on:
+      - web.apigateway
+      - s_postgresql
+      - s_rabbitmq
+      - s_consul
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  apicompositionservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5004
+      - ConsulConfig__Address=http://s_consul:8500
+      - ConsulConfig__ServiceAddress=http://c_apicomposition:5004
+      - ConsulConfig__ServiceName=ApiCompositionService
+      - ConsulConfig__ServiceId=ApiComposition
+    ports:
+      - 5004:5004
+    networks:
+      - net_backendservices
+    depends_on:
+      - web.apigateway
+      - s_consul
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  web.apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - 5000:5000
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  notificationservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5005
+      - ConsulConfig__Address=http://s_consul:8500
+      - ConsulConfig__ServiceAddress=http://c_notificationservice:5005
+      - ConsulConfig__ServiceName=NotificationService
+      - ConsulConfig__ServiceId=Notification
+    ports:
+      - 5005:5005
+    networks:
+      - net_backendservices
+    depends_on:
+      - web.apigateway
+      - s_rabbitmq
+      - s_consul
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  s_consul:
+    ports:
+      - 8500:8500
+      - 8600:8600/tcp
+      - 8600:8600/udp
+    networks:
+      - net_apigateway
+      - net_backendservices
+
+  s_postgresql:
+    ports: 
+      - 5432:5432
+      - 6543:5432
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/data/postgres"
+    networks:
+      - net_backendservices
+
+  s_redis:
+    ports:
+        - 6379:6379
+    networks:
+      - net_backendservices
+  s_redisinsight:
+    ports:
+      - '8001:8001'
+    networks:
+      - net_backendservices
+
+  s_rabbitmq:
+    ports:
+        - 5672:5672
+        - 15672:15672
+    networks:
+      - net_backendservices
+
+networks:
+  net_backendservices:
+     driver: bridge
+     external: true
+  net_apigateway:
+     driver: bridge
+     external: true
+  
+
+    
+    
+
+

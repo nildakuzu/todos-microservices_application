@@ -1,0 +1,137 @@
+{
+  "Routes": [
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UserManagementService",
+      "DownstreamPathTemplate": "/api/user/Create",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamPathTemplate": "/user/create"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UserManagementService",
+      "DownstreamPathTemplate": "/api/auth/Login",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamPathTemplate": "/user/login"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ToDoManagementService",
+      "DownstreamPathTemplate": "/api/todo/GetUserTodos/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/todo/getusertodos/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ToDoManagementService",
+      "DownstreamPathTemplate": "/api/todo/Filter",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/todo/filter",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ToDoManagementService",
+      "DownstreamPathTemplate": "/api/todo/Update",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/todo/update",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ToDoManagementService",
+      "DownstreamPathTemplate": "/api/todo/Delete/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/todo/delete/{everything}",
+      "UpstreamHttpMethod": [ "Delete" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ToDoManagementService",
+      "DownstreamPathTemplate": "/api/todo/DeleteUserTodos/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/todo/deleteusertodos/{everything}",
+      "UpstreamHttpMethod": [ "Delete" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ToDoManagementService",
+      "DownstreamPathTemplate": "/api/todo/Get/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/todo/get/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/apiComposite/CreateTodo",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apicompositionservice.api",
+          "Port": 5004
+        }
+      ],
+      "UpstreamPathTemplate": "/todo/create",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "GroupManagementService",
+      "DownstreamPathTemplate": "/api/group/Create",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/group/create",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "GroupManagementService",
+      "DownstreamPathTemplate": "/api/group/Update",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/group/update",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "GroupManagementService",
+      "DownstreamPathTemplate": "/api/group/Delete/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/group/delete/{everything}",
+      "UpstreamHttpMethod": [ "Delete" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "GroupManagementService",
+      "DownstreamPathTemplate": "/api/group/Get/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/group/get/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "GroupManagementService",
+      "DownstreamPathTemplate": "/api/group/DeleteUserGroups/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/group/deleteusergroups/{everything}",
+      "UpstreamHttpMethod": [ "Delete" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "GroupManagementService",
+      "DownstreamPathTemplate": "/api/group/GetUserGroups/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/group/getusergroups/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ],
+
+  "GlobalConfiguration": {
+    "BaseUrl": "https://web.apigateway:5000",
+    "ServiceDiscoveryprovider": {
+      "Host": "web.apigateway",
+      "Port": "8500",
+      "Type": "Consul"
+    }
+  }
+}

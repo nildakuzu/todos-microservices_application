@@ -1,0 +1,69 @@
+version: '3.4'
+
+services:
+  usermanagementservice.api:
+    container_name: c_usermanagement
+    image: ${DOCKER_REGISTRY-}usermanagementserviceapi
+    build:
+      context: .
+      dockerfile: src/Services/UserManagementService/Dockerfile
+
+  groupmanagementservice.api:
+    container_name: c_groupmanagement
+    image: ${DOCKER_REGISTRY-}groupmanagementserviceapi
+    build:
+      context: .
+      dockerfile: src/Services/GroupManagementService/Dockerfile
+
+
+  todomanagementservice.api:
+    container_name: c_todomanagement
+    image: ${DOCKER_REGISTRY-}todomanagementserviceapi
+    build:
+      context: .
+      dockerfile: src/Services/ToDoManagementService/Dockerfile
+
+
+  apicompositionservice.api:
+    container_name: c_apicomposition
+    image: ${DOCKER_REGISTRY-}apicompositionserviceapi
+    build:
+      context: .
+      dockerfile: src/Services/ApiCompositionService/Dockerfile
+
+
+  web.apigateway:
+    container_name: c_apigateway
+    image: ${DOCKER_REGISTRY-}webapigateway
+    build:
+      context: .
+      dockerfile: src/ApiGateways/Web.ApiGateway/Dockerfile
+
+
+  notificationservice:
+    container_name: c_notificationservice
+    image: ${DOCKER_REGISTRY-}notificationservice
+    build:
+      context: .
+      dockerfile: src/Services/NotificationService/Dockerfile
+
+  s_redis:
+    container_name: c_redis
+    image: redis
+
+  s_redisinsight:
+    image: redislabs/redisinsight:latest
+
+  
+  s_postgresql:
+    container_name: c_postgres
+    image: postgres
+  
+  s_consul:
+    container_name: c_consul
+    image: consul
+
+  s_rabbitmq:
+    container_name: c_rabbitmq
+    image: rabbitmq:3-management
+

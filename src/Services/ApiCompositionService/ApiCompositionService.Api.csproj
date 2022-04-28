@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>ddc83c98-94df-4120-8f19-5fa810234b2d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Consul" Version="1.6.10.4" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.15" />
+	  <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.17.0" />
+	  <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+</Project>
