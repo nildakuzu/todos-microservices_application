@@ -15,7 +15,7 @@ You can reach service endpoints like below
 <br/>
 ![Screenshot 2022-04-28 203924](https://user-images.githubusercontent.com/8994712/165814276-cfbe0f65-c919-4da6-9eb3-f1cbe4370c71.png)
 
-After you run commands, you can reach it from the below specified addresses.
+After you run commands, you can access it from the below specified addresses.
 
 ## Swagger endpoints
 																	
