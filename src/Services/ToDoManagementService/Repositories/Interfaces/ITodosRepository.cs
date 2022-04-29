@@ -6,6 +6,7 @@ namespace ToDoManagementService.Api.Repositories.Interfaces
 {
     public interface ITodosRepository
     {
+        Task<IEnumerable<Todo>> GetAll();
         Task<IEnumerable<Todo>> GetUserTodos(string userName);
         Task<IEnumerable<Todo>> FilterTodos(Todo todo);
         Task<Todo> Get(int id);

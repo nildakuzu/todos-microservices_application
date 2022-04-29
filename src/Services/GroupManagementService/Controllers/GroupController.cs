@@ -21,6 +21,16 @@ namespace GroupManagementService.Api.Controllers
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
+
+        [HttpGet("GetAll", Name = "GetAll")]
+        [ProducesResponseType(typeof(Group), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Group>>> GetAll()
+        {
+            var allList = await _repository.GetAll();
+
+            return Ok(allList);
+        }
+
         [HttpGet("GetUserGroups/{userName}", Name = "GetUserGroups")]
         [ProducesResponseType(typeof(Group), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<List<Group>>> GetUserGroups(string userName)

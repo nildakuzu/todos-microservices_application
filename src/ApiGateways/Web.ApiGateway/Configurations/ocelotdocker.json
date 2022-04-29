@@ -11,10 +11,26 @@
     {
       "UseServiceDiscovery": true,
       "ServiceName": "UserManagementService",
+      "DownstreamPathTemplate": "/api/user/GetAll",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamPathTemplate": "/user/getall"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UserManagementService",
       "DownstreamPathTemplate": "/api/auth/Login",
       "DownstreamScheme": "http",
       "UpstreamHttpMethod": [ "Post" ],
       "UpstreamPathTemplate": "/user/login"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "ToDoManagementService",
+      "DownstreamPathTemplate": "/api/todo/GetAll",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/todo/getall",
+      "UpstreamHttpMethod": [ "Get" ]
     },
     {
       "UseServiceDiscovery": true,
@@ -75,6 +91,14 @@
       ],
       "UpstreamPathTemplate": "/todo/create",
       "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "GroupManagementService",
+      "DownstreamPathTemplate": "/api/group/GetAll",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/group/getall",
+      "UpstreamHttpMethod": [ "Get" ]
     },
     {
       "UseServiceDiscovery": true,

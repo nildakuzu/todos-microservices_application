@@ -95,5 +95,15 @@ namespace GroupManagementService.Api.Repositories
 
             return group;
         }
+
+        public async Task<IEnumerable<Group>> GetAll()
+        {
+            using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
+
+            var groupList = await connection.QueryAsync<Group>
+                ("SELECT * FROM grouptbl");
+
+            return groupList;
+        }
     }
 }

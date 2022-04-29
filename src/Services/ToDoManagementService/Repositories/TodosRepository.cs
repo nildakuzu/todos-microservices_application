@@ -107,6 +107,16 @@ namespace ToDoManagementService.Api.Repositories
             return groupList;
         }
 
+        public async Task<IEnumerable<Todo>> GetAll()
+        {
+            using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
+
+            var groupList = await connection.QueryAsync<Todo>
+                ("SELECT * FROM todotbl");
+
+            return groupList;
+        }
+
         public async Task<bool> Update(Todo todo)
         {
             using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));

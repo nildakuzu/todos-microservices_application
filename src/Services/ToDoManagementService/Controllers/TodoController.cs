@@ -34,6 +34,15 @@ namespace ToDoManagementService.Api.Controllers
             return Ok(userTodoList);
         }
 
+        [HttpGet("GetAll", Name = "GetAll")]
+        [ProducesResponseType(typeof(Todo), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Todo>>> GetAll()
+        {
+            var allList = await _repository.GetAll();
+
+            return Ok(allList);
+        }
+
         [HttpPost("Filter")]
         [ProducesResponseType(typeof(Todo), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Todo>> Filter([FromBody] Todo todo)

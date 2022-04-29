@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using StackExchange.Redis;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UserManagementService.Api.Interfaces.Repositories;
 using UserManagementService.Api.Models.Request;
@@ -37,13 +39,20 @@ namespace UserManagementService.Api.Interfaces
             if (!created)
             {
                 _loggerFactory.LogError($"A problem is occured when {createUserRequestModel.User.UserName} user is created");
-                
+
                 return false;
             }
 
             _loggerFactory.LogInformation("User is created.");
 
             return true;
+        }
+
+        public List<string> GetAllKey()
+        {
+            var endpoints = _connectionMultiplexer.GetEndPoints();
+
+            return _connectionMultiplexer.GetServer(endpoints[0]).Keys().Select(s => s.ToString()).ToList();
         }
     }
 }
