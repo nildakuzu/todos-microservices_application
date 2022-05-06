@@ -1,82 +1,122 @@
 {
   "Routes": [
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "UserManagementService",
       "DownstreamPathTemplate": "/api/user/Create",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "usermanagementservice.api",
+          "Port": 5001
+        }
+      ],
       "UpstreamHttpMethod": [ "Post" ],
       "UpstreamPathTemplate": "/user/create"
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "UserManagementService",
       "DownstreamPathTemplate": "/api/user/GetAll",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "usermanagementservice.api",
+          "Port": 5001
+        }
+      ],
       "UpstreamHttpMethod": [ "Get" ],
       "UpstreamPathTemplate": "/user/getall"
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "UserManagementService",
       "DownstreamPathTemplate": "/api/auth/Login",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "usermanagementservice.api",
+          "Port": 5001
+        }
+      ],
       "UpstreamHttpMethod": [ "Post" ],
       "UpstreamPathTemplate": "/user/login"
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "ToDoManagementService",
       "DownstreamPathTemplate": "/api/todo/GetAll",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "todomanagementservice.api",
+          "Port": 5002
+        }
+      ],
       "UpstreamPathTemplate": "/todo/getall",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "ToDoManagementService",
       "DownstreamPathTemplate": "/api/todo/GetUserTodos/{everything}",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "todomanagementservice.api",
+          "Port": 5002
+        }
+      ],
       "UpstreamPathTemplate": "/todo/getusertodos/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "ToDoManagementService",
       "DownstreamPathTemplate": "/api/todo/Filter",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "todomanagementservice.api",
+          "Port": 5002
+        }
+      ],
       "UpstreamPathTemplate": "/todo/filter",
       "UpstreamHttpMethod": [ "Post" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "ToDoManagementService",
       "DownstreamPathTemplate": "/api/todo/Update",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "todomanagementservice.api",
+          "Port": 5002
+        }
+      ],
       "UpstreamPathTemplate": "/todo/update",
       "UpstreamHttpMethod": [ "Put" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "ToDoManagementService",
       "DownstreamPathTemplate": "/api/todo/Delete/{everything}",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "todomanagementservice.api",
+          "Port": 5002
+        }
+      ],
       "UpstreamPathTemplate": "/todo/delete/{everything}",
       "UpstreamHttpMethod": [ "Delete" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "ToDoManagementService",
       "DownstreamPathTemplate": "/api/todo/DeleteUserTodos/{everything}",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "todomanagementservice.api",
+          "Port": 5002
+        }
+      ],
       "UpstreamPathTemplate": "/todo/deleteusertodos/{everything}",
       "UpstreamHttpMethod": [ "Delete" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "ToDoManagementService",
       "DownstreamPathTemplate": "/api/todo/Get/{everything}",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "todomanagementservice.api",
+          "Port": 5002
+        }
+      ],
       "UpstreamPathTemplate": "/todo/get/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
     },
@@ -93,69 +133,92 @@
       "UpstreamHttpMethod": [ "Post" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "GroupManagementService",
       "DownstreamPathTemplate": "/api/group/GetAll",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "groupmanagementservice.api",
+          "Port": 5003
+        }
+      ],
       "UpstreamPathTemplate": "/group/getall",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "GroupManagementService",
       "DownstreamPathTemplate": "/api/group/Create",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "groupmanagementservice.api",
+          "Port": 5003
+        }
+      ],
       "UpstreamPathTemplate": "/group/create",
       "UpstreamHttpMethod": [ "Post" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "GroupManagementService",
       "DownstreamPathTemplate": "/api/group/Update",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "groupmanagementservice.api",
+          "Port": 5003
+        }
+      ],
       "UpstreamPathTemplate": "/group/update",
       "UpstreamHttpMethod": [ "Put" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "GroupManagementService",
       "DownstreamPathTemplate": "/api/group/Delete/{everything}",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "groupmanagementservice.api",
+          "Port": 5003
+        }
+      ],
       "UpstreamPathTemplate": "/group/delete/{everything}",
       "UpstreamHttpMethod": [ "Delete" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "GroupManagementService",
       "DownstreamPathTemplate": "/api/group/Get/{everything}",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "groupmanagementservice.api",
+          "Port": 5003
+        }
+      ],
       "UpstreamPathTemplate": "/group/get/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "GroupManagementService",
       "DownstreamPathTemplate": "/api/group/DeleteUserGroups/{everything}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/group/deleteusergroups/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "groupmanagementservice.api",
+          "Port": 5003
+        }
+      ],
       "UpstreamHttpMethod": [ "Delete" ]
     },
     {
-      "UseServiceDiscovery": true,
-      "ServiceName": "GroupManagementService",
       "DownstreamPathTemplate": "/api/group/GetUserGroups/{everything}",
       "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "groupmanagementservice.api",
+          "Port": 5003
+        }
+      ],
       "UpstreamPathTemplate": "/group/getusergroups/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
     }
   ],
 
   "GlobalConfiguration": {
-    "BaseUrl": "https://web.apigateway:5000",
-    "ServiceDiscoveryprovider": {
-      "Host": "web.apigateway",
-      "Port": "8500",
-      "Type": "Consul"
-    }
+    "BaseUrl": "http://c_apigateway"
   }
 }
